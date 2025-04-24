@@ -1,0 +1,131 @@
+/* tailwind css */
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* google font inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@theme{
+  --font-inter: "Inter", "sans-serif"
+}
+
+/* In your global CSS file */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
+.banner_slide_item{
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7.5rem;
+}
+
+.banner_image {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make pseudo-element responsive */
+.banner_image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 80%;
+  max-width: 500px;
+  height: 70%;
+  /* background-color: purple; */
+  border-radius: 50%;
+  z-index: -1;
+}
+
+
+/* Adjust for medium and larger screens */
+@media (min-width: 768px) {
+  .banner_image::before {
+    width: 400px;
+    height: 400px;
+    right: 48%;
+    background-color: rgba(128, 0, 128, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner_image::before {
+    width: 500px;
+    height: 500px;
+    right: 45%;
+  }
+}
+
+/* Slider arrows and dots responsive tweaks */
+.silck_slider .slick-prev::before,
+.silck_slider .slick-next::before {
+  color: black;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .silck_slider .slick-prev::before,
+  .silck_slider .slick-next::before {
+    font-size: 25px;
+  }
+}
+
+.silck_slider .slick-dots li.slick-active button:before {
+  color: orangered;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .silck_slider .slick-dots li.slick-active button:before {
+    font-size: 18px;
+  }
+}
+
+
+.delivery_component {
+  margin-top: -1rem;
+  position: relative;
+  z-index: 5;
+}
+
+
+.features_slider>.slick-slider>.slick-prev:before,
+.features_slider>.slick-slider>.slick-next:before {
+    font-size: 22px !important;
+    color: #007580;
+}
+
+
+.client_say_description {
+  position: relative;
+}
+.client_say_description::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: -27px;
+  width: 3px;
+  height: 100%;
+  background-color: #007580;
+
+}
+
+/* 
+color using in project
+color:{
+  violet-800,
+  white,
+  gray-800,
+  green-800,
+  blue-800,
+  orange-800
+} */
