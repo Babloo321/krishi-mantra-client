@@ -3,10 +3,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { ShoppingCart } from 'lucide-react';
 import useProducts from '../../hooks/useProduct';
-
+import { useNavigate } from 'react-router';
 const Features = () => {
   const { products } = useProducts();
-
+  const navigate = useNavigate();
   const settings = {
     dots: false,
     infinite: true,
@@ -39,7 +39,9 @@ const Features = () => {
       },
     ],
   };
-
+  const handleProductClick = (product)=>{
+    navigate('/product-details',{state:{product}})
+  }
   return (
     <div className="w-full bg-gray-300 py-8 overflow-x-hidden">
       <div className="max-w-screen-xl mx-auto">
@@ -51,7 +53,9 @@ const Features = () => {
             <Slider {...settings}>
               {products.map((feature, index) => (
                 <div key={index} className="p-3">
-                  <div className="bg-gray-100 rounded-xl shadow hover:shadow-lg transition-all h-[350px] md:h-[400px] flex flex-col">
+                  <div 
+                  onClick={()=>handleProductClick(feature)}
+                  className="bg-gray-100 rounded-xl shadow hover:shadow-lg transition-all h-[350px] md:h-[400px] flex flex-col">
                     <img
                       src={feature?.image}
                       alt={feature?.name}

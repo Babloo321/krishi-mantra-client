@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCart,
-  addToCart,
-  removeFromCart,
   clearCart,
 } from "../rtk/cart.slice.js";
 import useAxiosPrivate from "./useAxiosPrivate.js";

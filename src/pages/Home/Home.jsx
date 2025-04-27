@@ -8,8 +8,8 @@ import Product from '../../components/product/Product';
 import Recent from '../../components/recent/Recent';
 function Home() {
   return (
-    <div className="bg-gray-300">
-      <div className="w-full min-h-[550px] flex items-center justify-center bg-gray-200 ">
+    <div className="bg-gray-300 overflow-hidden md:pt-25 lg:pt-28">
+      <div className="w-full min-h-[550px] flex items-center justify-center bg-gray-200 md:px-12">
         <Banner />
       </div>
 

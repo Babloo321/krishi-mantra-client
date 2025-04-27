@@ -41,8 +41,8 @@ const Login = () => {
           refreshToken:refreshToken
         }
         login(logingData);
+        setCart();
         if(refetch) refetch();
-         setCart();
         toast.success("Successfully Login")
        navigate("/")
       }
@@ -102,7 +102,7 @@ const Login = () => {
     },
   });
   return (
-    <div className="lg:container mx-auto p-[80px]">
+    <div className="md:py-42 mx-auto pt-22">
       <div className="max-w-[450px] w-full min-h-[382px] p-[31px] mx-auto flex items-center justify-center flex-col rounded-lg border-[1px] border-[#9a9caa]">
         
         <h3 className="text-3xl text-[#272343] font-semibold font-inter mb-5 capitalize">

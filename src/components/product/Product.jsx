@@ -1,14 +1,18 @@
 import { useState } from "react";
-import SectionTitle from "../SectionTitle/SectionTitle";
 import { ShoppingCart } from "lucide-react";
 import useProducts from "../../hooks/useProduct";
-
+import { useNavigate } from "react-router";
 const Product = () => {
   const { products } = useProducts();
+  const navigate = useNavigate();
   const [active, setActive] = useState({
     id: 0,
     product: "all",
   });
+
+  const handleProductClick = (product)=>{
+    navigate('/product-details',{state:{product}})
+  }
 
   const productTitle = [
     {
@@ -60,7 +64,9 @@ const Product = () => {
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-4 gap-2">
         {products?.map((product) => (
           <div key={product._id} className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <div className="mb-4 relative">
+            <div 
+            onClick={()=>handleProductClick(product)}
+            className="mb-4 relative">
               <img
                 className="w-full h-[100px] sm:h-[130px] md:h-[180px] lg:h-[250px] object-cover rounded-lg"
                 src={product?.image}

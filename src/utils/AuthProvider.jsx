@@ -6,7 +6,6 @@ import useProducts from '../hooks/useProduct.js';
 import useCart from "../hooks/useCart.js";
 const CheckAuthProvider = ({ children }) => {
   const { setCart } = useCart();
-
   const { refetch } = useProducts();
   const AxiosPrivate = useAxiosPrivate();
   const { login } = useAuth();
@@ -19,11 +18,11 @@ const CheckAuthProvider = ({ children }) => {
         if (user && accessToken) {
           // console.log("User data: ",user);
           login({ user, accessToken, refreshToken });
-          if (refetch) refetch(); 
           setCart();
+          if (refetch) refetch(); 
         }
       } catch (error) {
-        toast.info("You are not logged in", error.message)
+        toast.error("You are not logged in", error.message)
       } finally {
         setLoading(false); // ✅ Always stop loading
       }

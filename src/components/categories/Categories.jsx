@@ -2,9 +2,10 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import useProducts from '../../hooks/useProduct';
+import { useNavigate } from 'react-router';
 const Categories = () => {
   const { products } = useProducts();
-
+  const navigate = useNavigate();
   const settings = {
     className: 'center',
     centerMode: true,
@@ -36,7 +37,9 @@ const Categories = () => {
       },
     ],
   };
-
+  const handleProductClick = (product)=>{
+    navigate('/product-details',{state:{product}})
+  }
   return (
     <div className="w-full bg-gray-300 px-2 md:px-8 lg:px-12">
       <p className="text-xl md:text-3xl lg:text-4xl text-justify text-orange-900 font-linter font-semibold md:font-bold underline mb-8">
@@ -46,7 +49,9 @@ const Categories = () => {
         <Slider {...settings}>
           {products?.map((category, index) => (
             <div key={index} className="px-3">
-              <div className="relative rounded-lg overflow-hidden h-[300px] md:h-[380px] lg:h-[424px]">
+              <div 
+              onClick={()=>handleProductClick(category)}
+              className="relative rounded-lg overflow-hidden h-[300px] md:h-[380px] lg:h-[424px]">
                 <img
                   className="w-full h-full object-cover"
                   src={category?.image}
